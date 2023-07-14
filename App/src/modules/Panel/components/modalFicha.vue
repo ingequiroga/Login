@@ -98,7 +98,7 @@ export default {
     let y = 30
     const doc = new jsPDF('p', 'px');
     let width = doc.internal.pageSize.getWidth();
-    let height = doc.internal.pageSize.getHeight();
+    //let height = doc.internal.pageSize.getHeight();
     
 
   
