@@ -3,7 +3,7 @@ class Persona{
 
 // database connection and table name
 private $conn;
-private $table_name = "personas";
+private $table_name = "Tb_personas";
 
     // object properties
     public $idPersona;
