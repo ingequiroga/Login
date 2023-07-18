@@ -9,7 +9,7 @@ import inmueblesApi from '@/Api/InmueblesApi'
 
 export const login = async ({commit},datos) => {   
     const {data} = await validarUsuario(datos)
-    console.log(data);
+    //console.log(data);
      if (data.error) {
        commit('limpiarUser')
        commit('SetError',data.message)
@@ -33,6 +33,6 @@ export const cargarUsuario = async ({commit},user) => {
 
 export const getPersona = async ({commit},id)=> {
 const {data} = await inmueblesApi.get('persona/readone.php?Id='+id)
-console.log(data);
+//console.log(data);
 commit('setPersona',data)
   }
