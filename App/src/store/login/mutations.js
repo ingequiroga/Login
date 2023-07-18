@@ -1,5 +1,5 @@
 export const logearUser = (state, val) =>{
-   console.log(val);
+   //console.log(val);
   state.user.email = val.Email
     state.user.idpersona = val.IdPersona
     state.user.idrol = val.IdRol
