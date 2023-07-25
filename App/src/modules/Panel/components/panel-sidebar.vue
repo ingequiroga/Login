@@ -2,19 +2,19 @@
     <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
       <div class="position-sticky pt-3">
         <ul class="nav flex-column">
-          <li class="nav-item" v-if="user.idrol==1">
+          <!-- <li class="nav-item" v-if="user.idrol==1">
             <router-link class="nav-link" to="/catalogos">
                <span data-feather="home"></span>
               Catalogos
             </router-link>
-          </li>
+          </li> -->
           <li class="nav-item">
-            <router-link class="nav-link" to="/inmuebles">
+            <router-link class="nav-link"  to="/inmuebles" style="pointer-events: none;">
               <span data-feather="file"></span>
               Inmuebles
             </router-link>
           </li>
-          <li class="nav-item">
+          <!-- <li class="nav-item">
              <router-link class="nav-link" to="/addinmueble">
                <span data-feather="shopping-cart"></span>
                Nuevo Inmueble
@@ -43,7 +43,7 @@
               <span data-feather="layers"></span>
               Adquisición
             </router-link>
-          </li>
+          </li> -->
         </ul>  
       </div>
     </nav>

@@ -72,6 +72,7 @@ export default {
  methods:{
     async llenarFicha()
     {
+      
     let resp = await this.Obtener(this.id)
     console.log("Inmueble");
     console.log(resp);
