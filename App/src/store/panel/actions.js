@@ -29,7 +29,7 @@ export const guardarInmueble = async ({commit},inmueble) => {
    
 export const getDescCatalogo = async ({commit},id)=> {
    //const {data} = inmueblesApi.get('catalogos/getxid.php?IdDet='+id) 
-   const {data} = await inmueblesApi.get('catalogos/getxid.php?IdDet='+id) 
+   const {data} = await inmueblesApi.get('catalogos/getxId.php?IdDet='+id) 
    console.log(data)
    console.log(commit)
    return data
