@@ -64,19 +64,22 @@ function readOne(){
     $query = 
       "
       SELECT 
-      `NumCredito`,`NombreDeudor`,`ApellidosDeudor`,`TipoAdquisicion`,`IdReoBan`, 
-      `NumFolioReal`,`CuentaCat`,inm.EstatusInmueble,`ComentarioRegPub`, inm.`IdEstado`,inm.`IdMunicipio`,inm.Calle,
-      inm.CodigoPostal, inm.M2superficie, inm.M2construccion, MontoDeuda, MontoMin, MontoVenta, NumExpediente, ComentarioExpJudicial,
-      rcb.nombre as NomRec,inm.`IdEtapa`, et.Descripcion as Etapa, 
-      est.Nombre as NomEstado, mun.Nombre as NomMunic, inm.Banos, inm.Cochera, inm.Dormitorios, inm.DescripcionAdicional,
-      inm.Colonia, inm.NumInterior, inm.NumExt, inm.TipoInmueble
-      FROM inmueble inm 
-      INNER JOIN tb_recuperadorabanco rcb ON inm. IdReoBan = rcb.IdEntidad 
-      INNER JOIN tb_etapas et ON et.IdEtapa = inm.IdEtapa
-      INNER JOIN tb_estados est ON inm.IdEstado = est.IdEstado
-      INNER JOIN tb_municipios mun ON mun.IdMunicipio = inm.IdMunicipio
-      WHERE inm.IdInmueble = ?
-      ";        
+      `numCredit_inmueble`,`nombreDeudor_inmueble`,`apellidosDeudor_inmueble`,`tipoAdquisicion_inmueble`
+      ,`id_proveedor_inmueble`, `numFolioReal_inmueble`,`cuentaCat_inmueble`,inm.`estatus_inmueble`,
+      `comentRegPub_inmueble`, mun.`id_estado_municipio`,inm.`id_municipio_inmueble`,inm.`calle_inmueble`,
+      inm.`codigoPostal_inmueble`, inm.`m2superficie_inmueble`, inm.`m2construccion_inmueble`, 
+      `montoDeuda_inmueble`, `montoMin_inmueble`, `montoVenta_inmueble`, `numExpediente_inmueble`, `comentExpJud_inmueble`,
+      pro.`nombre_proveedor` as NomProveedor,inm.`id_etapa_inmueble`, et.`descripcion_etapa` as Etapa, 
+      est.`nombre_estado` as NomEstado, mun.`nombre_municipio` as NomMunic, inm.`banos_inmueble` as Banos, 
+      inm.`cochera_inmueble` as Cochera, inm.`dormitorios_inmueble` as Dormitorios, inm.`descripcionAdicional_inmueble` as DescripcionAdicional,
+      inm.`colonia_inmueble`as Colonia, inm.`numInt_inmueble` as NumInterior, inm.`numExt_inmueble` as NumExt
+      , inm.`tipo_inmueble` as TipoInmueble
+      FROM ". $this->table_name . " inm 
+      INNER JOIN tb_proveedores pro ON inm. id_proveedor_inmueble = pro.id_proveedor 
+      INNER JOIN tb_etapas et ON et.id_etapa = inm.id_etapa_inmueble
+      INNER JOIN tb_municipios mun ON mun.id_municipio = inm.id_municipio_inmueble
+      INNER JOIN tb_estados est ON mun.id_estado_municipio = est.id_estado
+      WHERE inm.id_inmueble = ?";        
    
       // prepare query statement
       $stmt = $this->conn->prepare( $query );
@@ -95,28 +98,27 @@ function readOne(){
        //echo $row['idUsuario'];
    
        // // set values to object properties
-        $this->NumCredito = $row['NumCredito'];
-        $this->NombreDeudor = $row['NombreDeudor'];
-        $this->ApellidosDeudor = $row['ApellidosDeudor'];
-        $this->TipoAdquisicion =$row['TipoAdquisicion'];
-        $this->IdReoBan=$row['IdReoBan'];
-        $this->NumFolioReal=$row['NumFolioReal'];
-        $this->CuentaCat=$row['CuentaCat'];
-        $this->EstatusInm = $row['EstatusInmueble'];
-        $this->ComentarioRegPub=$row['ComentarioRegPub'];
-        $this->IdEstado = $row['IdEstado'];
-        $this->IdMunicipio = $row['IdMunicipio'];
-        $this->Calle = $row['Calle'];
-        $this->CodigoPostal = $row['CodigoPostal'];
-        $this->M2superficie = $row['M2superficie'];
-        $this->M2construccion = $row['M2construccion'];
-        $this->MontoDeuda = $row['MontoDeuda'];
-        $this->MontoMin = $row['MontoMin'];
-        $this->MontoVenta = $row['MontoVenta'];
-        $this->NumExpediente = $row['NumExpediente'];
-        $this->ComentarioExpJudicial = $row['ComentarioExpJudicial'];
-        $this->NomRec = $row['NomRec'];
-        $this->IdEtapa = $row['IdEtapa'];
+        $this->NumCredito = $row['numCredit_inmueble'];
+        $this->NombreDeudor = $row['nombreDeudor_inmueble'];
+        $this->ApellidosDeudor = $row['apellidosDeudor_inmueble'];
+        $this->TipoAdquisicion =$row['tipoAdquisicion_inmueble'];
+        $this->IdReoBan=$row['id_proveedor_inmueble'];
+        $this->NumFolioReal=$row['numFolioReal_inmueble'];
+        $this->CuentaCat=$row['cuentaCat_inmueble'];
+        $this->EstatusInm = $row['estatus_inmueble'];
+        $this->ComentarioRegPub=$row['comentRegPub_inmueble'];
+        $this->IdMunicipio = $row['id_municipio_inmueble'];
+        $this->Calle = $row['calle_inmueble'];
+        $this->CodigoPostal = $row['codigoPostal_inmueble'];
+        $this->M2superficie = $row['m2superficie_inmueble'];
+        $this->M2construccion = $row['m2construccion_inmueble'];
+        $this->MontoDeuda = $row['montoDeuda_inmueble'];
+        $this->MontoMin = $row['montoMin_inmueble'];
+        $this->MontoVenta = $row['montoVenta_inmueble'];
+        $this->NumExpediente = $row['numExpediente_inmueble'];
+        $this->ComentarioExpJudicial = $row['comentExpJud_inmueble'];
+        $this->NomRec = $row['NomProveedor'];
+        $this->IdEtapa = $row['id_etapa_inmueble'];
         $this->Etapa = $row['Etapa'];
         $this->NomEstado = $row['NomEstado'];
         $this->NomMunic = $row['NomMunic'];
@@ -138,14 +140,12 @@ function read(){
         // select all query
         $query = 
         "SELECT 
-        inm.IdInmueble,NumCredito,es.Nombre as Estado, mun.Nombre as Municipio, pro.Descripcion as proceso
-        , pro.IdProceso, adq.Estatus
+        inm.id_inmueble as IdInmueble,inm.numCredit_inmueble as NumCredito,es.nombre_estado as Estado, mun.nombre_municipio as Municipio
         FROM 
-        inmueble inm 
-        Inner JOIN tb_estados es ON inm.IdEstado = es.IdEstado
-        INNER JOIN tb_municipios mun ON inm.IdMunicipio = mun.IdMunicipio
-        INNER JOIN tb_adquisicion adq ON inm.IdInmueble = adq.IdInmueble 
-        INNER JOIN tb_procesos pro ON adq.IdProceso = pro.IdProceso";
+        ". $this->table_name . " inm 
+        INNER JOIN tb_municipios mun ON inm.id_municipio_inmueble = mun.id_municipio
+		Inner JOIN tb_estados es ON mun.id_estado_municipio = es.id_estado
+  ";
 
      
         // prepare query statement

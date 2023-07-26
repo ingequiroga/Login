@@ -37,13 +37,10 @@ if($num>0){
         extract($row);
  
         $inmueble_item=array(
-            "IdInmueble" => $IdInmueble,
+            "idInmueble" => $IdInmueble,
             "NumCredito" => $NumCredito,
             "Estado" => $Estado,
             "Municipio" => $Municipio,
-            "Proceso" => $proceso,
-            "IdProceso" => $IdProceso,
-            "Estatus" => $Estatus
         );
  
         array_push($inmuebles_arr["datos"], $inmueble_item);
