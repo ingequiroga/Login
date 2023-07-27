@@ -21,7 +21,7 @@ export const guardarInmueble = async ({commit},inmueble) => {
   export const getInmuebles = async ({commit})=> {
     const {data} = await inmueblesApi.get('inmueble/readall.php')
     const {datos} = data
-    console.log(datos);
+   //console.log(datos);
     commit('setInmuebles',datos)
     //return datos;
    }
@@ -30,14 +30,14 @@ export const guardarInmueble = async ({commit},inmueble) => {
 export const getDescCatalogo = async ({commit},id)=> {
    //const {data} = inmueblesApi.get('catalogos/getxid.php?IdDet='+id) 
    const {data} = await inmueblesApi.get('catalogos/getxId.php?IdDet='+id) 
-   console.log(data)
+   //console.log(data)
    console.log(commit)
    return data
   }
 
 
 export const getImagenes = async ({commit},id)=> {
-   let iddefault = 0;
+   let iddefault = 1;
    const {data} = await inmueblesApi.get('imagenes/getbyinmueble.php?IdInmueble='+id)
    const {imagenes} = data
    if (imagenes.length == 0) {

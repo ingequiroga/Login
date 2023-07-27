@@ -128,7 +128,7 @@ methods:{
     {
       this.fichaInmueble = id
       this.showModalFicha = true
-      //console.log(inmueble)
+      console.log(id)
       //this.$refs.modalFichaRef.inmueble =inmueble
      // this.$refs.modalFichaRef.dialog =true
     },
